@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Itinerary</title>
+    <link type="text/css" rel="stylesheet" href="/static/myItineraryStyle.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/shadowbox-3.0.3/shadowbox.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="/static/googleMapStyle.js"></script>
+    <script type="text/javascript" src="/static/myItineraryScript.js"></script>
+    <script type="text/javascript" src="/static/shadowbox-3.0.3/shadowbox.js"></script>
+    <script type="text/javascript" src="/static/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="/static/infobox.js"></script>
+    <script type="text/javascript" src="/static/sly.min.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        Shadowbox.init({
+            skipSetup: true
+        });
+
+        var countries ={{ countries|safe }};
+        var states = {{ states|safe }};
+        var cities = {{ cities|safe }};
+        var treeData = {{ treeData|safe }};
+
+    </script>
+    <style>
+    #tree-container{
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    .slidebar{
+        position:absolute;
+        cursor: pointer;
+        opacity: .5;
+        background-color: black;
+        top:18px;
+        left: 674px;
+        width: 26px;
+        height: 600px;
+        color:white;
+        z-index: 1;
+    }
+    .graph-svg-component {
+        position: absolute;
+        top: 34px;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .node {
+        cursor: pointer;
+    }
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 0px;
+    }
+    .node text {
+        font: 14px 'Gruppo';
+        fill: white;
+    }
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1px;
+    }
+    </style>
+  </head>
+  <body>
+
+
+    <div id="map-canvas"></div>
+    <div id="tree-container">
+        <p class='slidebar' id='show'>&nbsp;<<</p>
+    </div>
+    <div id="info">
+        <!---<p id="close" onclick="$('#info').animate({'width':'hide'})" style="cursor:pointer">x</p>--->
+        <p>play gallery</p>
+    </div>
+
+  </body>
+</html>

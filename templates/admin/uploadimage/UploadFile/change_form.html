@@ -1,0 +1,51 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="/static/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/jquery.exif.js"></script>
+    <script>
+
+    $(document).ready(function() {
+        var a = $('#GPSLookup')
+        var b = $('#id_lat')
+        a.insertAfter(b);
+
+        var someCallback = function(exifObject) {
+            if(exifObject.GPSLatitude){
+                var latitude = exifObject.GPSLatitude;
+                var longitude = exifObject.GPSLongitude;
+                var lat = latitude[0] + latitude[1]/60 + latitude[2]/3600;
+                var lng = longitude[0] + longitude[1]/60 + longitude[2]/3600;
+                if(exifObject.GPSLatitudeRef == 'S'){
+                    lat = -1*lat;
+                }
+                if(exifObject.GPSLongitudeRef == 'W'){
+                    lng = -1*lng;
+                }
+                document.getElementById("id_lat").value = lat.toPrecision(10);
+                document.getElementById("id_lng").value = lng.toPrecision(10);
+            }
+        }
+
+        try {
+            $(document).on('change','#id_file', function() {
+                $(this).fileExif(someCallback);
+            });
+        }
+        catch (e) {
+            alert(e);
+        }
+    });
+
+    function popupWindow() {
+        window.open("http://www.latlong.net/", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=500, width=750, height=650");
+    }
+    </script>
+{% endblock %}
+
+{% block object-tools %}
+{{ block.super }}
+<a onclick = "popupWindow()" id="GPSLookup" style="cursor: pointer; width: 110px; color: white; background-color: #48A1D4; margin:5px; padding: 5px; font-size:12px">Search Coordinate</a>
+{% endblock %}

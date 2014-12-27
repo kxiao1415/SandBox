@@ -1,0 +1,23 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="/static/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script>
+        $(document).ready(function() {
+            var a = $('#GPSLookup')
+            var b = $('#id_lat')
+            a.insertAfter(b);
+        });
+
+        function popupWindow() {
+            window.open("http://www.latlong.net/", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=500, width=750, height=650");
+        }
+    </script>
+{% endblock %}
+
+{% block object-tools %}
+{{ block.super }}
+<a onclick = "popupWindow()" id="GPSLookup" style="cursor: pointer; width: 110px; color: white; background-color: #48A1D4; margin:5px; padding: 5px; font-size:12px">Search Coordinate</a>
+{% endblock %}

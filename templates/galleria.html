@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+    <title>galleria</title>
+    <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="/static/galleria/themes/twelve/galleria.twelve.css"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/galleria/galleria-1.4.2.min.js"></script>
+    </head>
+    <body>
+    <div class="galleria">
+        {% if photos %}
+        {% for photo in photos %}
+            <img src="{{ photo.file.url }}" data-description="{{ photo.description }}">
+        {% endfor %}
+        {% endif %}
+        </div>
+       <script>
+   Galleria.loadTheme('/static/galleria/themes/twelve/galleria.twelve.min.js');
+   Galleria.run(".galleria",{show:{{ show }}});
+</script>
+    </body>
+</html>

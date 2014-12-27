@@ -1,0 +1,98 @@
+html{
+       background-color: #333333;
+       background-size: cover;
+       }
+#princessProblem{
+        height: 500px;
+        width: 400px;
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        margin-left: -200px;
+
+        }
+
+#father {
+        height: 150px;
+        width: 400px;
+        position: absolute;
+        background-color: #333333;
+        top:25%;
+        }
+
+.son{   height: 100%;
+        width: 20%;
+        position: absolute;
+        }
+
+#son1 {
+        top: 300%;
+        background-color: #f5dcdd;
+        }
+
+#son2 {
+        top:-250%;
+        left: 20%;
+        background-color: #f77171;
+        }
+
+#son3 {
+        top:200%;
+        left: 40%;
+        background-color: #575751;
+        }
+#son4 {
+        top:-150%;
+        left: 60%;
+        background-color: #526b64;
+        }
+#son5 {
+        top: 100%;
+        left: 80%;
+        background-color: #79a693;
+        }
+#greeting {
+        font-weight:bold;
+        font-size: 25px;
+        font-family: 'Gruppo', cursive;
+        color: #FFFFFF;
+        text-align: center;
+        }
+#rulesLink {
+        color: #f77171;
+        }
+
+#rules {
+        height : 420px;
+        width : 300px;
+        top : 10%;
+        left: 0;
+        position: absolute;
+        background-color: #b9b9a9;
+        font-family: 'Gruppo', cursive;
+        color: #FFFFFF;
+        display: none;
+        z-index:1;
+        }
+
+#panel {
+        height : 420px;
+        width : 300px;
+        top : 10%;
+        position: absolute;
+        z-index: 2;
+        display: none;
+        }
+
+#next {
+
+        position: absolute;
+        top: 95%;
+        left: 95%;
+
+        }
+#skip{
+        color: #FFFFFF;
+        font-family: 'Gruppo', cursive;
+        text-decoration: none;
+        }

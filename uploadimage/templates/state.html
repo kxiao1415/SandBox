@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>State</title>
+    </head>
+
+    <body>
+        {% if state %}
+            <table>
+            {% for i in state %}
+                <tr>
+                    <td><a href = "{% url 'uploadimage:upload' country_id i.pk  %}"><img class = 'state' src = '/static/countryicon.png'/></a></td>
+                    <td>{{ i.name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+            <p>Need to add state</p>
+        {% endif %}
+
+        <div id = "addstate">
+            <h2>add a new state</h2>
+            <form action="" method = "post">{% csrf_token %}
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                    <div class="field_container">
+                        {{ field.errors }}
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <input type="submit" value="create" />
+            </form>
+        </div>
+
+    </body>
+</html>

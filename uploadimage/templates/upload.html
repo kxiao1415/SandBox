@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Upload a file</title>
+		{% load staticfiles %}
+		<link href="{% static 'dropzone/css/dropzone.css' %}" type="text/css" rel="stylesheet"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<form class="dropzone" action=" " method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+            <div>
+            {{form.country.label_tag}}
+            {{form.country}}
+            {{form.state.label_tag}}
+            {{form.state}}
+            {{form.city.label_tag}}
+            {{form.city}}
+            </div>
+		</form>
+		<button id="submit-all">
+			Submit all files
+		</button>
+        <a href = "/admin/uploadimage/uploadfile/"><button> back </button></a>
+
+		<script src="{% static 'dropzone/js/dropzone.js' %}"></script>
+        <script>
+            Dropzone.autoDiscover = false;
+
+            var myDropzone = new Dropzone(".dropzone",{
+                addRemoveLinks: true,
+                dictRemoveFile:'click to remove',
+                autoProcess : false,
+                autoProcessQueue : false,
+                parallelUploads: 10
+            });
+
+            $('#submit-all').click(function() {
+                myDropzone.processQueue();
+            });
+
+        </script>
+	</body>
+</html>

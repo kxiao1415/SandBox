@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+        <html>
+            <head>
+                <title>image detail</title>
+            </head>
+
+            <body>
+
+        <form action="{% url 'uploadimage:remove' image.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="submit" value="Delete" />
+        </form>
+
+            </body>
+        </html>

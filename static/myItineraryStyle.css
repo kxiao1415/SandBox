@@ -1,0 +1,119 @@
+html{
+       background-color: #333333;
+       background-size: cover;
+       }
+
+/*google map canvas*/
+#map-canvas {
+        height: 100%;
+        width : 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index:-1;
+        }
+
+#info {
+        height : 200px;
+        top : 10%;
+        right: 0;
+        position: absolute;
+        background-color: #b9b9a9;
+        font-family: 'Gruppo', cursive;
+        color: #FFFFFF;
+        display:none;
+        }
+
+/* remove the scroll bar from the infoWindow of the google map marker*/
+.scrollFix {
+        line-height: 1.35;
+        overflow: hidden;
+        white-space: nowrap;
+        }
+
+/* remove the closeButton from the infoWindow of the google map marker
+.gm-style-iw + div {
+        display: none;
+        }
+*/
+
+/*below is infoBox style to give photos the 3D effect*/
+#frame {
+	height: 110px;
+    margin: 0px 0px;
+    padding: 0px 0px; //(ver,hor)
+	overflow: hidden;
+	-webkit-perspective: 800px;
+	-ms-perspective: 800px;
+	perspective: 450px;
+	-webkit-perspective-origin: 50% 50%;
+	-ms-perspective-origin: 50% 50%;
+	perspective-origin: 50% 50%;
+	overflow-y: show;
+}
+.slidee {
+	list-style: none;
+	margin: 0;
+    padding: 0;
+	height: 100%;
+	font-size: 30px;
+	-webkit-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+
+.slidee li {
+	float: left;
+	height: 100px;
+	width: 120px;
+	margin: 0px -10px 0px -10px;
+	padding: 0px;
+	background-color: rgba(0, 0, 0, 0);
+    border: solid transparent;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transform: rotateY(60deg) scale(0.9);
+	-ms-transform: rotateY(60deg) scale(0.9);
+	transform: rotateY(60deg) scale(0.9);
+	-webkit-transition: -webkit-transform 300ms ease-out;
+	transition: transform 300ms ease-out;
+}
+
+.slidee li.active {
+	border: 2px solid white;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+    }
+
+.slidee li.active ~ li {
+	-webkit-transform: rotateY(-60deg) scale(0.9);
+	-ms-transform: rotateY(-60deg) scale(0.9);
+	transform: rotateY(-60deg) scale(0.9);
+}
+
+.scrollbar {
+	margin: 0 0 1em 0;
+	height: 2px;
+	background: #ccc;
+	line-height: 0;
+}
+.scrollbar .handle {
+	width: 100px;
+	height: 100%;
+	background: #292a33;
+
+}
+.scrollbar .handle .mousearea {
+	position: absolute;
+	top: -9px;
+	left: 0;
+	width: 100%;
+	height: 20px;
+}
+.controls {
+            margin: 0 0;
+            text-align: center;
+          }
+

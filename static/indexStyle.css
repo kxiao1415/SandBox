@@ -1,0 +1,28 @@
+html{
+       background-color: #333333;
+       background-size: cover;
+    }
+
+body{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0 0 0 0;
+    background:url("siteImage/bg.jpg");
+}
+
+#content {
+        height: 500px;
+        width: 400px;
+        position: fixed;
+        top: 10%;
+        left: 55%;
+        font-family: 'Gruppo', cursive;
+        font-size: 30px;
+        color: #FFFFFF;
+
+    }
+#itinerary {
+            font-family: 'Gruppo', cursive;
+            color: #FFFFFF;
+           }

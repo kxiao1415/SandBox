@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hi</title>
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}puzzle1Style.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div id="topLeft">
+    <div id="home"></div>
+    <div id="contact"></div>
+</div>
+
+<div id="panel"></div>
+
+<div id="rules">
+    <p>
+        all about the rules.
+    </p>
+</div>
+
+<div id="princessProblem">
+
+<div>
+    <p id="greeting">
+        You found a puzzle.<br>
+        Here are the <span id="rulesLink">rules</span>.
+    </p>
+</div>
+
+<div id="father">
+   <div id="son1" class='son'></div>
+   <div id="son2" class='son'></div>
+   <div id="son3" class='son'></div>
+   <div id="son4" class='son'></div>
+   <div id="son5" class='son'></div>
+</div>
+
+</div>
+
+<div id="next">
+    <a id='skip' href="http://google.com">skip</a>
+</div>
+
+<audio>
+	<source src="{{ STATIC_URL }}audioFiles/rules.ogg">
+	<source src="{{ STATIC_URL }}audioFiles/rules.mp3">
+    Your browser does not support the audio tag.
+</audio>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}puzzle1Script.js"></script>
+
+</body>
+
+
+</html>

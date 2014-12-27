@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>edit image</title>
+        <link type="text/css" rel="stylesheet" href="/static/images.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <h2>List of Stuff</h2>
+        {% if image %}
+            <table>
+            {% for i in image %}
+               <a href = 'https://www.google.com'><img class="image" src="{{ i.instance.file.url }}"/></a><br/>
+               <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                     {% for field in i %}
+                    <div class="field_container">
+                        {{ field.errors }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                    <input type="hidden" name="action" value= i.instance.id>
+                    <input type="submit" value="Update" />
+                </form>
+            {% endfor %}
+            </table>
+        {% else %}
+            <p>Need to add image</p>
+        {% endif %}
+    </body>
+</html>

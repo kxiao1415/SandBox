@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            smash cars
+        </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <style>
+            #graph{
+                position: relative;
+                background-color: #333333;
+                width: 100%;
+                height: 200px;
+            }
+            #car1{
+                position: absolute;
+                content:url('/static/siteImage/bluecar.png');
+                top: 50%;
+                left: 0%;
+                width:50px;
+                height: 25px;
+            }
+
+            #car2{
+                position: absolute;
+                content:url('/static/siteImage/redcar.png');
+                top: 50%;
+                right: 0%;
+                width:50px;
+                height: 25px;
+            }
+            #grid{
+                position: relative;
+                width: calc(100% - 100px);
+                height: 100%;
+                left:50px;
+            }
+
+            #grid .roadMark {
+                position: relative;
+                width: 10%;
+                height: 10px;
+                top: 63%;
+                border-top: 1px solid white;
+                color: white;
+                float: left;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+                var inMotion=false;
+                var startTime =0;
+                var stopTime =0;
+                var timeElapsed = 0;
+
+                function gridLabel(distance){
+                    var grids = document.getElementsByClassName("roadMark");
+                    for(var i=0;i<grids.length;i ++){
+                        grids[i].innerHTML = "| "+((distance/10)*i).toFixed(1);
+                    }
+                }
+
+                $('#start').click(function(){
+                    var car1speed = Number(document.getElementById('Car1Speed').value);
+                    var car2speed = Number(document.getElementById('Car2Speed').value);
+
+                    if(car1speed == 0 && car2speed == 0) {
+                        $('#demo').html('Nobody is moving.');
+                    } else if (car1speed < 0 || car2speed < 0){
+                        $('#demo').html('Please use non-negative numbers for speed.');
+                    } else {
+
+                        gridLabel(Number(document.getElementById('distance').value));
+
+                        if(inMotion == false){
+                            timeElapsed +=stopTime - startTime;
+                            var d = new Date();
+                            startTime = d.getTime();
+                            var trueTravelTime =0;
+
+                            var totalLength = document.getElementById("graph").offsetWidth-100;
+                            //to keep constant speed after every restart, I have to recalculate the remaining distance
+                            var distance =  Number(document.getElementById('distance').value)-(timeElapsed*(car1speed+car2speed)/(1000*3600));
+                            var traveltime = distance/(car1speed + car2speed);
+
+                            var trueTravelTime = Number(document.getElementById('distance').value)/(car1speed + car2speed);
+
+                            var car1travel = (totalLength*car1speed)/(car1speed+car2speed);
+                            var car2travel = totalLength - car1travel;
+                            var car1travelpx = car1travel+'px';
+                            var car2travelpx = car2travel+'px';
+
+                            $('#car1').animate({marginLeft: car1travelpx },traveltime*3600000,'linear');
+                            $('#car2').animate({marginRight: car2travelpx},traveltime*3600000,'linear');
+
+                            $('#demo').html('Two cars collide at mile ' + (trueTravelTime*car1speed).toFixed(3) + ' from the red car after ' + (trueTravelTime*60).toFixed(3) + ' Minutes.');
+
+                            document.getElementById("end").disabled = false;
+                            document.getElementById("reset").disabled = false;
+                            document.getElementById("pause").disabled = false;
+                            document.getElementById("start").disabled = true;
+
+                            inMotion = true;
+                        }
+                    }
+                });
+
+                $('#pause').click(function(){
+                    if(inMotion == true){
+                        var d = new Date();
+                        stopTime = d.getTime();
+                        $('#car1').stop();
+                        $('#car2').stop();
+
+                        document.getElementById("end").disabled = true;
+                        document.getElementById("reset").disabled = false;
+                        document.getElementById("pause").disabled = true;
+                        document.getElementById("start").disabled = false;
+                        inMotion = false;
+                    }
+                });
+
+                $('#end').click(function(){
+                    if(inMotion == true){
+                        $('#car1').stop(true,true);
+                        $('#car2').stop(true,true);
+
+                        document.getElementById("reset").disabled = false;
+                        document.getElementById("start").disabled = true;
+                        document.getElementById("pause").disabled = true;
+                        document.getElementById("end").disabled = true;
+                        inMotion = false;
+                    }
+                });
+
+                $('#reset').click(function(){
+                    document.getElementById("car1").remove();
+                    document.getElementById("car2").remove();
+                    var car1 = document.createElement('div');
+                    car1.id = 'car1';
+                    var car2 = document.createElement('div');
+                    car2.id = 'car2';
+                    document.getElementById('graph').appendChild(car1);
+                    document.getElementById('graph').appendChild(car2);
+
+                    startTime =0;
+                    stopTime =0;
+                    timeElapsed = 0;
+
+                    document.getElementById("start").disabled = false;
+                    document.getElementById("reset").disabled = true;
+                    document.getElementById("pause").disabled = true;
+                    document.getElementById("end").disabled = true;
+                    inMotion = false;
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <h1>Smashing Cars</h1>
+        <div id='graph'>
+            <div id='car1'></div>
+            <div id ='car2'></div>
+            <div id='grid'>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+                <div class='roadMark'>|</div>
+            </div>
+        </div>
+
+        <p id="demo"></p>
+        <div><div id='1'>Car 1 Speed: </div> <input type="text" name="Car1Speed" value="0" id='Car1Speed'/>mph</div>
+        <div><div id='2'>Car 2 Speed: </div> <input type="text" name="Car2Speed" value="0" id='Car2Speed'/>mph</div>
+        <div><div id='3'>Distance:</div><input type ="text" name ="distance" value="100" id ='distance'/>mile(s)</div>
+        <button id='start' type="button">Start</button>
+        <button id='pause' type ='button' disabled>Pause</button>
+        <button id='end' type="button" disabled>End</button>
+        <button id='reset' type="button" disabled>Reset</button>
+    </body>
+</html>
