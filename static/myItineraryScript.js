@@ -89,7 +89,7 @@ $(document).ready(function(){
     function attachPhotoEvent(marker,countryName, stateName, cityName, parentfileuuid){
         google.maps.event.addListener(marker, 'click', function() {
             Shadowbox.open({
-                content:'/galleria/country=' + countryName + '&state=' + stateName + '&city=' + cityName + '&parentfileuuid=' + parentfileuuid + '&show=0' + '/',
+                content:'/galleria/country=' + countryName + '&state=' + stateName + '&city=' + cityName + '&parentfileuuid=' + parentfileuuid + '&show=1' + '/',
                 player: 'iframe',
                 type: 'iframe'
             });
