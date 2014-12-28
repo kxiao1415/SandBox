@@ -9,18 +9,22 @@ import uuid
 # Register your models here.
 
 class CountryAdmin(admin.ModelAdmin):
+    change_form_template = 'admin/uploadimage/Country/change_form.html'
     readonly_fields = ('uuid',)
     list_display = ('name','lat','lng')
 
 class StateAdmin(admin.ModelAdmin):
+    change_form_template = 'admin/uploadimage/State/change_form.html'
     readonly_fields = ('uuid',)
     list_display = ('country','name','lat','lng')
 
 class CityAdmin(admin.ModelAdmin):
+    change_form_template = 'admin/uploadimage/City/change_form.html'
     readonly_fields = ('uuid',)
     list_display = ('country','state','name','lat','lng')
 
 class UploadFileAdmin(admin.ModelAdmin):
+    change_form_template = 'admin/uploadimage/UploadFile/change_form.html'
     readonly_fields = ('uuid',)
     list_display = ('country','state','city','date','lat','lng','description','thumb','parentfileuuid','isSubPhoto')
 
