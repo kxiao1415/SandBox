@@ -28,25 +28,33 @@
     <style>
     #tree-container{
         position:absolute;
-        top:0;
-        left:0;
+        left: 0;
+        /*
+        left: 50%;
+        top:45%;
+        margin-top: -300px;
+        margin-left: -337px;
+        */
     }
     .slidebar{
         position:absolute;
         cursor: pointer;
-        opacity: .5;
+        opacity: .75;
         background-color: black;
         top:18px;
-        left: 674px;
+        left: 0px;
         width: 26px;
         height: 600px;
+        border-radius: 0 10px 10px 0;
         color:white;
         z-index: 1;
     }
     .graph-svg-component {
         position: absolute;
         top: 34px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 1.5%;
+        display: none;
     }
     .node {
         cursor: pointer;
@@ -72,7 +80,7 @@
 
     <div id="map-canvas"></div>
     <div id="tree-container">
-        <p class='slidebar' id='show'>&nbsp;<<</p>
+        <p class='slidebar' id='hide'>&nbsp;>></p>
     </div>
     <div id="info">
         <!---<p id="close" onclick="$('#info').animate({'width':'hide'})" style="cursor:pointer">x</p>--->

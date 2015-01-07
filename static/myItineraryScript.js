@@ -22,7 +22,7 @@ $(document).ready(function(){
 
     var defaultMarker ='/static/siteImage/marker2.png';
     var centerPos=new google.maps.LatLng(36.642815,-87.7517476);
-    var zoomLevel=3;
+    var zoomLevel=2;
 
     function addCSSRule(sheet, selector, rules, index) {
         if ("insertRule" in sheet) {
@@ -611,12 +611,12 @@ $(document).ready(function(){
     $(".slidebar").click(function(){ $('.graph-svg-component').animate({width: 'toggle'},650,'easeOutBack');
 
                                      if($(this).attr('id') =='show'){
-                                        $(this).animate({marginLeft: '-675px'},650,'easeOutBack');
+                                        $(this).animate({marginLeft: '0px'},650,'easeOutBack');
                                         $(this).attr('id','hide');
                                         $(this).html('&nbsp;>>');
                                      }
                                      else {
-                                        $(this).animate({marginLeft: '0px'},650,'easeOutBack');
+                                        $(this).animate({marginLeft: '675px'},650,'easeOutBack');
                                         $(this).attr('id','show');
                                         $(this).html('&nbsp;<<');
                                      }
