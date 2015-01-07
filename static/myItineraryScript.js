@@ -89,7 +89,7 @@ $(document).ready(function(){
     function attachPhotoEvent(marker,countryName, stateName, cityName, parentfileuuid){
         google.maps.event.addListener(marker, 'click', function() {
             Shadowbox.open({
-                content:'/galleria/country=' + countryName + '&state=' + stateName + '&city=' + cityName + '&parentfileuuid=' + parentfileuuid + '&show=0' + '/',
+                content:'/galleria/country=' + countryName + '&state=' + stateName + '&city=' + cityName + '&parentfileuuid=' + parentfileuuid + '&show=1' + '/',
                 player: 'iframe',
                 type: 'iframe'
             });
@@ -139,11 +139,17 @@ $(document).ready(function(){
                 return ib;
             }
         });
+
+        google.maps.event.addListener(marker, 'mouseout', function() {
+            clearInfoBox();
+        });
     }
 
     function attachInfoBox(marker,geoLocation){
         var info=[]
-        google.maps.event.addListener(marker, 'mouseover', function() {
+
+        google.maps.event.addListener(marker, 'click', function() {
+
             /*info[0].getMap() checks to see is the info[0] was closed but not deleted
               redraw the infoBox is info[] is null or info[0] was closed*/
 
@@ -240,7 +246,7 @@ $(document).ready(function(){
         infoBox = [];
     }
 
-    function attachInfoWindow(marker){
+    function attachInfoWindow(marker, text){
         var info=[]
         google.maps.event.addListener(marker, 'mouseover', function() {
 
@@ -248,7 +254,12 @@ $(document).ready(function(){
                 info[0].close();
             }
 
-            var clickMe = '<div class="scrollFix">click me!</div>';
+            var clickMe = '<div class="scrollFix" style="text-align: center;"> click to show gallery </div>';
+            //check to see if markers are photos.
+            if(markers.length !== 0){
+                clickMe = '<div class="scrollFix" style="text-align: center;">' + '<span style="font-size: 16px;">' + text + '</span>' + '<br>click to show gallery'+'<br>or<br>double click to zoom in</div>';
+            }
+
             var infoWindow = new google.maps.InfoWindow({
                 content: clickMe
             });
@@ -257,9 +268,15 @@ $(document).ready(function(){
 
             info[0]=infoWindow;
 
+            /*
             setTimeout(function() {
                 infoWindow.close()
             }, 900);
+            */
+        });
+
+        google.maps.event.addListener(marker, 'mouseout', function() {
+                info[0].close();
         });
     }
 
@@ -297,27 +314,27 @@ $(document).ready(function(){
 
     function attachCountryMarkerEvent(marker,countryName) {
 
-        attachInfoWindow(marker);
+        attachInfoWindow(marker,countryName);
 
         attachInfoBox(marker,[countryName,'','']);
 
-        google.maps.event.addListener(marker, 'click', function(){clickOnCountryMarker(countryName);});
+        google.maps.event.addListener(marker, 'dblclick', function(){clickOnCountryMarker(countryName);});
     }
 
     function attachStateMarkerEvent(marker,countryName,stateName) {
 
-        attachInfoWindow(marker);
+        attachInfoWindow(marker,stateName);
 
         attachInfoBox(marker,[countryName, stateName,'']);
 
-        google.maps.event.addListener(marker, 'click', function() {clickOnStateMarker(countryName,stateName);});
+        google.maps.event.addListener(marker, 'dblclick', function() {clickOnStateMarker(countryName,stateName);});
     }
 
     function attachCityMarkerEvent(marker,countryName,stateName,cityName) {
-        attachInfoWindow(marker);
+        attachInfoWindow(marker,cityName);
         attachInfoBox(marker,[countryName, stateName, cityName]);
 
-        google.maps.event.addListener(marker, 'click', function() {clickOnCityMarker(countryName, stateName, cityName);});
+        google.maps.event.addListener(marker, 'dblclick', function() {clickOnCityMarker(countryName, stateName, cityName);});
 
     }
 
@@ -328,6 +345,7 @@ $(document).ready(function(){
     }
 
     function clickOnCountryMarker(countryName){
+
         removeAll();
 
         for (var i = 0; i < states.length; i++) {
@@ -390,7 +408,7 @@ $(document).ready(function(){
                                     //to change the background image size, add "background-size: ?px ?px"
                                     'background:url(' + json[i]['file']+ ') -5% 23% no-repeat');
                         attachPhotoInfoBox(photo,json[i]['description']);
-                        attachInfoWindow(photo);
+                        attachInfoWindow(photo,'');
                         attachPhotoEvent(photo, countryName, stateName, cityName, json[i]['parentfileuuid']);
 
                     }
@@ -621,4 +639,5 @@ $(document).ready(function(){
                                         $(this).html('&nbsp;<<');
                                      }
     });
+
 });
