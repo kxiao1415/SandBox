@@ -89,7 +89,7 @@ $(document).ready(function(){
     function attachPhotoEvent(marker,countryName, stateName, cityName, parentfileuuid){
         google.maps.event.addListener(marker, 'click', function() {
             Shadowbox.open({
-                content:'/galleria/country=' + countryName + '&state=' + stateName + '&city=' + cityName + '&parentfileuuid=' + parentfileuuid + '&show=0' + '/',
+                content:'/galleria/country=' + countryName + '&state=' + stateName + '&city=' + cityName + '&parentfileuuid=' + parentfileuuid + '&show=1' + '/',
                 player: 'iframe',
                 type: 'iframe'
             });
@@ -406,7 +406,7 @@ $(document).ready(function(){
                         addCSSRule(document.styleSheets[0],
                                     'img[src="' + '/static/siteImage/redFrame2.png#'+ i + '"]',
                                     //to change the background image size, add "background-size: ?px ?px"
-                                    'background:url(' + json[i]['file']+ ') -30% 23% no-repeat');
+                                    'background:url(' + json[i]['file']+ ') -5% 23% no-repeat');
                         attachPhotoInfoBox(photo,json[i]['description']);
                         attachInfoWindow(photo,'');
                         attachPhotoEvent(photo, countryName, stateName, cityName, json[i]['parentfileuuid']);
