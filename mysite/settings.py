@@ -121,7 +121,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace('\\','/')
+#MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace('\\','/')
 MEDIA_URL = '/media/'
 
 #below is for deployment on heroku
@@ -150,7 +150,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '..', 'static'),
 )
 
-'''
+
 #upload media files to s3
 AWS_QUERYSTRING_AUTH = False
 AWS_ACCESS_KEY_ID = 'AKIAIP63WIG5BHXFMISQ'
@@ -158,4 +158,3 @@ AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'myitinerary'
 MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-'''
