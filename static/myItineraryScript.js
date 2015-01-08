@@ -406,7 +406,7 @@ $(document).ready(function(){
                         addCSSRule(document.styleSheets[0],
                                     'img[src="' + '/static/siteImage/redFrame2.png#'+ i + '"]',
                                     //to change the background image size, add "background-size: ?px ?px"
-                                    'background:url(' + json[i]['file']+ ') -3% 23% no-repeat');
+                                    'background:url(' + json[i]['file']+ ') -30% 23% no-repeat');
                         attachPhotoInfoBox(photo,json[i]['description']);
                         attachInfoWindow(photo,'');
                         attachPhotoEvent(photo, countryName, stateName, cityName, json[i]['parentfileuuid']);
