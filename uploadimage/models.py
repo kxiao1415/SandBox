@@ -78,7 +78,7 @@ class UploadFile(models.Model):
         show_all=False,
         auto_choose=True
     )
-    file = ImageWithThumbsField(upload_to = UploadHandler, sizes = ((65,41),(115,78)))
+    file = ImageWithThumbsField(upload_to = UploadHandler, sizes = ((41,65),(78,115)))
     #file = models.ImageField(upload_to = UploadHandler)
     date = models.DateField(auto_now_add=True,blank=True,null=True)
     lat = models.DecimalField(max_digits=14,decimal_places=10,blank=True,null=True, default = -999)
@@ -88,7 +88,7 @@ class UploadFile(models.Model):
 
     def thumb (self):
         if self.file:
-            return mark_safe('<img src = "%s"/>' %(self.file.url_65x41))
+            return mark_safe('<img src = "%s"/>' %(self.file.url_41x65))
             #return mark_safe('<img style = "width:41px; height = 65px" src = "%s"/>' %(self.file.url))
         else:
             return 'No image file found'
