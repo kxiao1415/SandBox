@@ -156,5 +156,5 @@ AWS_QUERYSTRING_AUTH = False  # don't add complex authentication-related query p
 AWS_ACCESS_KEY_ID = 'AKIAIP63WIG5BHXFMISQ'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'myitinerary'
-MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = 'http://%s.s3.amazonaws.com/photo/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'

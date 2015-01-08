@@ -55,7 +55,7 @@ class City(models.Model):
 def UploadHandler(instance, filename):
     ext=filename.split('.')[-1]
     filename = datetime.now().strftime("%m-%d-%yat%H_%M_%S_%f")+"."+ext
-    return '/'.join(['photo', filename])
+    return filename
     #To save the files into different folders on upload
     #return '/'.join(['./photo', instance.country.name, instance.state.name, filename])
 
