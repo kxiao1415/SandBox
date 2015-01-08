@@ -151,8 +151,8 @@ STATICFILES_DIRS = (
 )
 
 
-#upload media files to s3
-AWS_QUERYSTRING_AUTH = False
+# upload media files to s3
+AWS_QUERYSTRING_AUTH = False  # don't add complex authentication-related query parameters for requests
 AWS_ACCESS_KEY_ID = 'AKIAIP63WIG5BHXFMISQ'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'myitinerary'
