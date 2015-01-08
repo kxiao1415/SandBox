@@ -149,11 +149,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '..', 'static'),
 )
 
+'''
 AWS_QUERYSTRING_AUTH = False
 AWS_ACCESS_KEY_ID = os.environ['AKIAIP63WIG5BHXFMISQ']
 AWS_SECRET_ACCESS_KEY = os.environ['WyJFAaYnkyU8wY6SMY3uIa0V8PS1voWQveS0m7Z5']
 AWS_STORAGE_BUCKET_NAME = os.environ['myitinerary']
 MEDIA_URL = 'http://%s.s3.amazonaws.com/your-folder/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
-
-
+'''
