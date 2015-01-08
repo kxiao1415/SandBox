@@ -154,11 +154,6 @@ AWS_ACCESS_KEY_ID = os.environ['AKIAIP63WIG5BHXFMISQ']
 AWS_SECRET_ACCESS_KEY = os.environ['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']
 AWS_STORAGE_BUCKET_NAME = 'myitinerary'
 S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-MEDIA_URL = S3_URL + 'media/'
+MEDIA_URL = S3_URL
 #DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
-DEFAULT_FILE_STORAGE = 'myProj.s3utils.MediaRootS3BotoStorage'
-AWS_PRELOAD_METADATA = True
-
-from S3 import CallingFormat
-
-AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
