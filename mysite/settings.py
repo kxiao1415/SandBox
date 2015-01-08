@@ -21,9 +21,9 @@ TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates').replace('\\','/'), )
 SECRET_KEY = 'pe5xb1qu46$wmu#++%zxh6ur582gtj-xxboaur64hja^0s+xmj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
