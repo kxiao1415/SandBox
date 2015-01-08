@@ -149,14 +149,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '..', 'static'),
 )
 
-#upload media file to s3
 AWS_QUERYSTRING_AUTH = False
 AWS_ACCESS_KEY_ID = 'AKIAIP63WIG5BHXFMISQ'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'myitinerary'
-S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-MEDIA_URL = S3_URL
+MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-from S3 import CallingFormat
-AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
