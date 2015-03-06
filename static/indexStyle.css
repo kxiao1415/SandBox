@@ -25,7 +25,20 @@ body{
         color: #FFFFFF;
 
     }
-#itinerary {
-            font-family: 'Gruppo', cursive;
-            color: #FFFFFF;
-           }
+
+#projects{
+        height: 500px;
+        width: 400px;
+        position: fixed;
+        top: 60%;
+        left: 55%;
+        font-family: 'Gruppo', cursive;
+        font-size: 15px;
+        color: #FFFFFF;
+    }
+
+
+a {
+    font-family: 'Gruppo', cursive;
+    color: #FFFFFF;
+  }

@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    var solution1 = [2,2,3,4,4,3,2];
-    var solution2 = [4,4,3,2,2,3,4];
-    var userInput = [0,0,0,0,0,0,0];
+    var solution1 = [2,3,4,4,3,2];
+    var solution2 = [4,3,2,2,3,4];
+    var userInput = [0,0,0,0,0,0];
     var audio = document.getElementsByTagName("audio")[0];
     audio.volume = .1;
 

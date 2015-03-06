@@ -156,3 +156,6 @@ def tree(request):
     data=json.dumps(treeData)
     return render(request, 'tree.html',{'data': data})
 
+def GOL(request):
+    return render(request, 'GOL.html')
+

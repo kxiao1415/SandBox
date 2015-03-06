@@ -1,0 +1,64 @@
+body {
+    margin: auto;
+    width: 900px;
+
+}
+#title{
+  font: bold 46px/40px 'Gruppo', 'Arial';
+  background: #BBBBBB;
+  letter-spacing: -2px;
+  margin: 10px 0 10px 0;
+  padding: 6px 6px 8px 8px;
+  }
+
+#title a{
+    color: #000000;
+    text-decoration: none;
+}
+
+
+.control{
+    background-repeat: no-repeat;
+    width: 48px;
+    height:48px;
+    border: none;
+    background-color: transparent;
+}
+
+#pre {
+    font-family: 'Gruppo', 'Arial';
+    float: left;
+}
+
+#age{
+    font-family: 'Gruppo', 'Arial';
+    float: left;
+}
+
+
+#reset{
+    background-image: url('/static/siteImage/back.png');
+    margin-left: 321px;
+}
+
+#start{
+    background-image: url('/static/siteImage/play1.png');
+}
+
+#pause{
+    background-image: url('/static/siteImage/pause.png');
+}
+
+#next{
+    background-image: url('/static/siteImage/forward.png');
+}
+
+#clear{
+    background-image: url('/static/siteImage/delete.png');
+}
+
+#export {
+    margin-left: 265px;
+}
+
+button:focus {outline:0 !important;}

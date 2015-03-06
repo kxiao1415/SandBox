@@ -21,9 +21,9 @@ TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates').replace('\\','/'), )
 SECRET_KEY = 'pe5xb1qu46$wmu#++%zxh6ur582gtj-xxboaur64hja^0s+xmj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -138,6 +138,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
+DEBUG = False
+
+TEMPLATE_DEBUG = False
+
 # Static asset configuration
 import os
 
@@ -159,3 +163,4 @@ AWS_SECRET_ACCESS_KEY = 'WyJFAaYnkyU8wY6SMY3uIa0V8PS1voWQveS0m7Z5'
 AWS_STORAGE_BUCKET_NAME = 'myitinerary'
 MEDIA_URL = 'http://%s.s3.amazonaws.com/photo/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
