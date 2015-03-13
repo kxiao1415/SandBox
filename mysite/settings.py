@@ -18,7 +18,7 @@ TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates').replace('\\','/'), )
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pe5xb1qu46$wmu#++%zxh6ur582gtj-xxboaur64hja^0s+xmj'
+SECRET_KEY = '*******************************************'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -158,8 +158,8 @@ STATICFILES_DIRS = (
 
 # upload media files to s3
 AWS_QUERYSTRING_AUTH = False  # don't add complex authentication-related query parameters for requests
-AWS_ACCESS_KEY_ID = 'AKIAIP63WIG5BHXFMISQ'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = '********************'
+AWS_SECRET_ACCESS_KEY = '***************************'
 AWS_STORAGE_BUCKET_NAME = 'myitinerary'
 MEDIA_URL = 'http://%s.s3.amazonaws.com/photo/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
