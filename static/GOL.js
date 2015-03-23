@@ -59,32 +59,20 @@ $(document).ready(function(){
 
 
     function neighborSum(map, i, j) {
-        var m = map.length - 1;
-        var n = map[0].length - 1;
         var sum = 0;
 
-        //if m == 0 or n == 0, all cells will eventually die, so, set sum = 0
-        if (m == 0 || n == 0) {
-         sum == 0;
-        } else if (i == 0 && j == 0) {
-            sum = map[i][j+1] + map[i+1][j+1] + map[i+1][j];
-        } else if (i == 0 && j == n) {
-            sum = map[i][j-1] + map[i+1][j-1] + map[i+1][j];
-        } else if (i == m && j == 0) {
-            sum = map[i][j+1] + map[i-1][j+1] + map[i-1][j];
-        } else if (i == m && j == n) {
-            sum = map[i][j-1] + map[i-1][j-1] + map[i-1][j];
-        } else if (i == 0 && j > 0 && j < n) {
-            sum = map[i][j-1] + map[i][j+1] + map[i+1][j-1] + map[i+1][j] + map[i+1][j+1];
-        } else if (i == m && j > 0 && j < n) {
-            sum = map[i][j-1] + map[i][j+1] + map[i-1][j-1] + map[i-1][j] + map[i-1][j+1];
-        } else if (j == 0 && i > 0 && i < m) {
-            sum = map[i+1][j] + map[i-1][j] + map[i+1][j+1] + map[i][j+1] + map[i-1][j+1];
-        } else if (j == n && i > 0 && i < m) {
-            sum = map[i+1][j] + map[i-1][j] + map[i+1][j-1] + map[i][j-1] + map[i-1][j-1];
-        } else {
-            sum = map[i-1][j-1] + map[i-1][j] + map[i-1][j+1] + map[i][j+1] + map[i+1][j+1] + map[i+1][j] + map[i+1][j-1] + map[i][j-1];
+        function isLive(x, y) {
+            return map[x] && map[x][y];
         }
+
+        if (isLive(i-1, j-1)) sum++;
+        if (isLive(i-1, j)) sum++;
+        if (isLive(i-1, j+1)) sum++;
+        if (isLive(i, j+1)) sum++;
+        if (isLive(i+1, j+1)) sum++;
+        if (isLive(i+1, j)) sum++;
+        if (isLive(i+1, j-1)) sum++;
+        if (isLive(i, j-1)) sum++;
 
         return sum;
     }
